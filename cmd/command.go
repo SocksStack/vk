@@ -1,6 +1,7 @@
 package cmd
 
 import (
+	"fmt"
 	m "github.com/SocksStack/vk/cmd/make"
 	n "github.com/SocksStack/vk/cmd/new"
 	"github.com/spf13/cobra"
@@ -22,5 +23,15 @@ func init() {
 }
 
 func Execute()  {
+	fmt.Println(banner)
 	rootCmd.Execute()
 }
+
+var banner = `
+ __   __   __  __       
+/\ \ / /  /\ \/ /       
+\ \ \'/   \ \  _"-.     
+ \ \__|    \ \_\ \_\    
+  \/_/      \/_/\/_/    
+   enjoy to use!!!
+`
