@@ -19,6 +19,7 @@ func init() {
 		m.Handler,
 		m.Repository,
 		m.Logic,
+		m.Model,
 	)
 }
 

@@ -3,6 +3,7 @@ package make
 import (
 	"fmt"
 	"github.com/SocksStack/vk/generate"
+	"github.com/SocksStack/vk/utils"
 	"github.com/spf13/cobra"
 	"log"
 	"os"
@@ -21,7 +22,7 @@ var (
 )
 
 func init() {
-	Model.PersistentFlags().String("type", "gorm", "指定 orm 类型, 默认：gorm")
+	Model.PersistentFlags().String("type", "gorm", "--type string")
 }
 
 func modelRun(cmd *cobra.Command, args []string)  {
@@ -37,9 +38,12 @@ func modelRun(cmd *cobra.Command, args []string)  {
 
 	log.Println(fmt.Sprintf("create %s model", name))
 	t, _ := cmd.Flags().GetString("type")
+	log.Println(t)
 	switch t {
 	case "gorm":
+		generate.CreateGormModel(curPath, path.Join("model", utils.SnakeString(name)))
+		break
 	default:
-		generate.CreateGormModel(curPath, path.Join("model", name))
+		generate.CreateGormModel(curPath, path.Join("model", utils.SnakeString(name)))
 	}
 }
